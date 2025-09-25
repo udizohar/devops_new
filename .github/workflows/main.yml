@@ -36,3 +36,13 @@ jobs:
       - name: Run pytest (single file)
         run: |
           pytest -q test_sample.py
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: test  # ← this runs *after* test
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Simulate deploy step
+        run: echo "Deploying project..."
